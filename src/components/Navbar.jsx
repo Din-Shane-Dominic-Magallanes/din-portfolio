@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef } from "react";
 import PropTypes from "prop-types";
 
@@ -6,6 +6,19 @@ const Navbar = ({navOpen}) => {
 
     const lastActiveLink = useRef();
     const activeBox = useRef();
+
+    const initActiveBox = () => {
+      activeBox.current.style.top = lastActiveLink.current.offsetTop + 'px';
+      activeBox.current.style.left = lastActiveLink.current.offsetLeft + 'px';
+      activeBox.current.style.width = lastActiveLink.current.offsetWidth + 'px';
+      activeBox.current.style.height = lastActiveLink.current.offsetHeight + 'px';
+    }
+
+    useEffect(initActiveBox, []);
+
+    const activeCurrentLink = (event) => {
+      
+    }
     
     const navItems = [
     {
@@ -37,7 +50,7 @@ const Navbar = ({navOpen}) => {
     ];
 
     return (
-        <nav className={'navbar ' + navOpen ? 'active' : ''}>
+        <nav className={'navbar ' + (navOpen ? 'active' : '')}>
             {
                 navItems.map(({ label, link, className, ref }, key) => (
                     <a
