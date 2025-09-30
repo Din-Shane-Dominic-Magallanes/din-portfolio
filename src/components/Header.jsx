@@ -31,7 +31,7 @@ const Header = () => {
                             {navOpen ? 'close' : 'menu'}
                         </span>
                     </button>
-
+ 
                     <Navbar navOpen={navOpen}/>
                 </div>
 
